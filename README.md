@@ -44,7 +44,7 @@ A modern healthcare web‑app built with React and deployed on Vercel, designed 
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/care-connect.git
+git clone https://github.com/eshab01/care-connect.git
 cd care-connect
 npm install
 ```
