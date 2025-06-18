@@ -123,7 +123,7 @@ Add scripts:
 
 ## 📄 License
 
-Licensed under the [MIT License](LICENSE).
+Licensed under the [Apache License](LICENSE).
 
 ---
 
