@@ -6,8 +6,10 @@ import { Video, Shield, Clock, Globe, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
 
 const OnlineConsultations = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const features = [
     {
       icon: <Video className="w-6 h-6" />,
@@ -176,11 +178,12 @@ const OnlineConsultations = () => {
                 Experience healthcare redefined. Connect with our doctors from anywhere, anytime.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" variant="secondary" className="bg-white text-healthcare-blue hover:bg-gray-100">
+                <Button size="lg" variant="secondary" className="bg-white text-healthcare-blue hover:bg-gray-100"
+                  onClick={() => setIsModalOpen(true)}>
                   Start Now
                 </Button>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-healthcare-blue">
+                  <Button size="lg" variant="outline" className="bg-white text-healthcare-blue hover:bg-gray-100">
                     Have Questions?
                   </Button>
                 </Link>
@@ -189,7 +192,7 @@ const OnlineConsultations = () => {
           </div>
         </section>
       </main>
-
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Footer />
     </div>
   );
