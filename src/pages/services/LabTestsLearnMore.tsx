@@ -6,8 +6,10 @@ import { TestTube, Clock, Shield, Download, CheckCircle, Microscope, FileText, S
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
 
 const LabTestsLearnMore = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const process = [
     {
       step: "1",
@@ -258,7 +260,8 @@ const LabTestsLearnMore = () => {
                 Order your lab tests today and get fast, accurate results with detailed insights from our medical experts.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" variant="secondary" className="bg-white text-healthcare-teal hover:bg-gray-100">
+                <Button size="lg" variant="secondary" className="bg-white text-healthcare-teal hover:bg-gray-100"
+                onClick={() => setIsModalOpen(true)}>
                   Order Tests Now
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-healthcare-teal">
@@ -269,6 +272,7 @@ const LabTestsLearnMore = () => {
           </div>
         </section>
       </main>
+            <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <Footer />
     </div>
