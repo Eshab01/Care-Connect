@@ -5,8 +5,11 @@ import { Calendar, Clock, MapPin, Users, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
 
 const ClinicAppointments = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
   const features = [
     {
       icon: <Calendar className="w-6 h-6" />,
@@ -43,7 +46,7 @@ const ClinicAppointments = () => {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-20">
+<main className="pt-20">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-healthcare-teal/10 to-healthcare-blue/10 py-20">
           <div className="container mx-auto px-4">
@@ -56,7 +59,11 @@ const ClinicAppointments = () => {
                 Quality healthcare delivered with personalized attention.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-gradient-to-r from-healthcare-teal to-healthcare-blue hover:from-healthcare-teal/90 hover:to-healthcare-blue/90">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-healthcare-teal to-healthcare-blue hover:from-healthcare-teal/90 hover:to-healthcare-blue/90"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   Book Appointment Now
                 </Button>
                 <Link to="/services/clinic-appointments/learn-more">
@@ -66,6 +73,7 @@ const ClinicAppointments = () => {
                 </Link>
               </div>
             </div>
+            
           </div>
         </section>
 
@@ -141,7 +149,7 @@ const ClinicAppointments = () => {
                   Schedule Now
                 </Button>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-healthcare-teal">
+                  <Button size="lg" variant="outline" className="bg-white text-healthcare-blue hover:bg-gray-100  ">
                     Contact Us
                   </Button>
                 </Link>
@@ -152,6 +160,7 @@ const ClinicAppointments = () => {
       </main>
 
       <Footer />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
