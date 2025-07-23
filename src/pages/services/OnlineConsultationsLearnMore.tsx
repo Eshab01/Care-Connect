@@ -6,8 +6,10 @@ import { Video, Clock, Shield, Users, CheckCircle, Monitor, Headphones, FileText
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
 
 const OnlineConsultationsLearnMore = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const process = [
     {
       step: "1",
@@ -249,7 +251,9 @@ const OnlineConsultationsLearnMore = () => {
                 Experience the convenience of online healthcare. Book your consultation today and get expert medical advice from the comfort of your home.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" variant="secondary" className="bg-white text-healthcare-teal hover:bg-gray-100">
+                <Button size="lg" variant="secondary" className="bg-white text-healthcare-teal hover:bg-gray-100"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   Start Consultation Now
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-healthcare-teal">
@@ -260,7 +264,7 @@ const OnlineConsultationsLearnMore = () => {
           </div>
         </section>
       </main>
-
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Footer />
     </div>
   );
