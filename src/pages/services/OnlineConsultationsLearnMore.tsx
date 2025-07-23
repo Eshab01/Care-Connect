@@ -2,73 +2,55 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Video, Clock, Shield, Users, CheckCircle, Monitor, Headphones, FileText } from 'lucide-react';
+import { Truck, Shield, Clock, Phone, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
-import BookingModal from '@/components/BookingModal';
+import OrderMedicinesModal from '@/components/OrderMedicinesModal';
+import UploadPrescriptionModal from '@/components/UploadPrescriptionModal';
 
-const OnlineConsultationsLearnMore = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const process = [
+const PrescriptionDelivery = () => {
+  const [showOrderModal, setShowOrderModal] = React.useState(false);
+  const [showUploadModal, setShowUploadModal] = React.useState(false);
+  const features = [
     {
-      step: "1",
-      title: "Choose Doctor",
-      description: "Browse available doctors by specialty, rating, and availability. Read profiles and patient reviews."
+      icon: <Truck className="w-6 h-6" />,
+      title: "Fast Delivery",
+      description: "Same-day delivery available for urgent medications within city limits"
     },
     {
-      step: "2",
-      title: "Schedule Session",
-      description: "Select your preferred time slot and book your video consultation instantly."
+      icon: <Shield className="w-6 h-6" />,
+      title: "Verified Medicines",
+      description: "All medications sourced from licensed pharmacies with quality assurance"
     },
     {
-      step: "3",
-      title: "Join Video Call",
-      description: "Connect through our secure platform using any device - computer, tablet, or smartphone."
+      icon: <Clock className="w-6 h-6" />,
+      title: "24/7 Service",
+      description: "Round-the-clock availability for emergency medication needs"
     },
     {
-      step: "4",
-      title: "Follow-up Care",
-      description: "Receive digital prescriptions, care plans, and schedule follow-up appointments as needed."
+      icon: <Phone className="w-6 h-6" />,
+      title: "Pharmacist Support",
+      description: "Expert consultation available for medication queries and interactions"
     }
   ];
 
-  const benefits = [
-    "Consult from the comfort of your home",
-    "No travel time or parking hassles",
-    "Access to specialists nationwide",
-    "Secure, HIPAA-compliant video calls",
-    "Digital prescriptions and care plans",
-    "24/7 availability for urgent consultations",
-    "Recorded sessions for future reference",
-    "Multi-language support available"
+  const deliveryOptions = [
+    "Same-day delivery (within 4 hours)",
+    "Next-day delivery",
+    "Scheduled delivery",
+    "Emergency delivery (within 2 hours)",
+    "Subscription refills",
+    "Cold chain delivery for special medications"
   ];
 
-  const consultationTypes = [
-    {
-      icon: <Monitor className="w-8 h-8" />,
-      title: "General Consultation",
-      description: "Routine check-ups, health concerns, and preventive care",
-      duration: "15-30 minutes"
-    },
-    {
-      icon: <Headphones className="w-8 h-8" />,
-      title: "Mental Health",
-      description: "Therapy sessions, counseling, and psychiatric consultations",
-      duration: "30-60 minutes"
-    },
-    {
-      icon: <FileText className="w-8 h-8" />,
-      title: "Follow-up Care",
-      description: "Post-treatment monitoring and medication adjustments",
-      duration: "10-20 minutes"
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Family Medicine",
-      description: "Pediatric care, family planning, and elderly care",
-      duration: "20-40 minutes"
-    }
+  const serviceAreas = [
+    "Chronic disease management",
+    "Post-surgery medications",
+    "Pediatric medications",
+    "Elderly care prescriptions",
+    "Mental health medications",
+    "Specialty medications"
   ];
 
   return (
@@ -77,24 +59,99 @@ const OnlineConsultationsLearnMore = () => {
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-healthcare-teal/10 to-healthcare-blue/10 py-20">
+        <section className="bg-gradient-to-br from-purple-50 to-pink-50 py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl font-display font-bold text-gray-900 mb-6 animate-fade-in">
-                Online Consultations - Learn More
+              <h1 className="text-5xl font-display font-bold text-gray-900 mb-6">
+                Prescription Delivery
               </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in delay-300">
-                Connect with healthcare professionals from anywhere through secure video consultations. Quality healthcare delivered to your doorstep.
+              <p className="text-xl text-gray-600 mb-8">
+                Get your medications delivered to your doorstep safely and quickly. 
+                Verified medicines with expert pharmacist support available 24/7.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
-                <Button size="lg" className="bg-gradient-to-r from-healthcare-teal to-healthcare-blue hover:from-healthcare-teal/90 hover:to-healthcare-blue/90">
-                  Start Consultation
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                onClick={() => setShowOrderModal(true)}>
+                  Order Medicines
                 </Button>
-                <Link to="/services/online-consultations">
-                  <Button size="lg" variant="outline" className="border-healthcare-teal text-healthcare-teal hover:bg-healthcare-teal hover:text-white">
-                    View Service Page
-                  </Button>
-                </Link>
+                <Button size="lg" variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+                onClick={() => setShowUploadModal(true)}>
+                  Upload Prescription
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">
+                Why Choose Our Delivery Service?
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Reliable, safe, and convenient medication delivery with professional care
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                      {feature.icon}
+                    </div>
+                    <CardTitle className="text-xl font-semibold">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-center text-gray-600">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Delivery Options */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">
+                  Delivery Options
+                </h2>
+                <p className="text-gray-600">
+                  Flexible delivery options to meet your specific needs
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-6">Delivery Speed</h3>
+                  <div className="space-y-4">
+                    {deliveryOptions.map((option, index) => (
+                      <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
+                        <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                        <span className="text-gray-700">{option}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-semibold mb-6">Service Areas</h3>
+                  <div className="space-y-4">
+                    {serviceAreas.map((area, index) => (
+                      <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
+                        <CheckCircle className="w-5 h-5 text-pink-500 flex-shrink-0" />
+                        <span className="text-gray-700">{area}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -104,170 +161,77 @@ const OnlineConsultationsLearnMore = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">How Online Consultations Work</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Simple, secure, and convenient - get expert medical advice without leaving your home
+              <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">
+                How Prescription Delivery Works
+              </h2>
+              <p className="text-gray-600">
+                Simple steps to get your medications delivered safely
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {process.map((item, index) => (
-                <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                  <CardHeader>
-                    <div className="w-16 h-16 bg-gradient-to-r from-healthcare-teal to-healthcare-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                      {item.step}
-                    </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600">
-                      {item.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-display font-bold text-gray-900 mb-6">
-                  Benefits of Online Consultations
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  Experience healthcare that adapts to your lifestyle with our comprehensive online consultation services.
-                </p>
-                
-                <div className="space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center space-x-3 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
-                      <CheckCircle className="w-6 h-6 text-healthcare-teal flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
-                    </div>
-                  ))}
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                  1
                 </div>
+                <h3 className="text-xl font-semibold mb-2">Upload Prescription</h3>
+                <p className="text-gray-600">Take a photo or upload your prescription digitally</p>
               </div>
-
-              <div className="relative">
-                <div className="bg-gradient-to-br from-healthcare-teal/20 to-healthcare-blue/20 rounded-3xl p-8 text-center">
-                  <Video className="w-24 h-24 text-healthcare-teal mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Secure Video Platform</h3>
-                  <p className="text-gray-600 mb-6">
-                    HIPAA-compliant video consultations with crystal-clear audio and video quality
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white rounded-lg p-3">
-                      <div className="font-semibold text-healthcare-teal">HD Video</div>
-                      <div className="text-gray-600">1080p Quality</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3">
-                      <div className="font-semibold text-healthcare-blue">Secure</div>
-                      <div className="text-gray-600">End-to-End Encrypted</div>
-                    </div>
-                  </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                  2
                 </div>
+                <h3 className="text-xl font-semibold mb-2">Verify & Confirm</h3>
+                <p className="text-gray-600">Our pharmacist verifies and confirms your order</p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Consultation Types */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">Types of Consultations</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                From routine check-ups to specialized care, we offer various consultation types to meet your needs
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {consultationTypes.map((type, index) => (
-                <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                  <CardHeader>
-                    <div className="w-16 h-16 bg-gradient-to-r from-healthcare-teal to-healthcare-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white">
-                      {type.icon}
-                    </div>
-                    <CardTitle className="text-xl">{type.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600 mb-4">
-                      {type.description}
-                    </CardDescription>
-                    <div className="text-sm font-medium text-healthcare-teal">
-                      Duration: {type.duration}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Technology & Security */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">Technology & Security</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Advanced technology ensuring secure, reliable, and high-quality video consultations
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="text-center p-8 border-0 shadow-lg">
-                <Shield className="w-16 h-16 text-healthcare-teal mx-auto mb-6" />
-                <h3 className="text-xl font-semibold mb-4">HIPAA Compliant</h3>
-                <p className="text-gray-600">Your privacy and medical information are protected with the highest security standards.</p>
-              </Card>
-              
-              <Card className="text-center p-8 border-0 shadow-lg">
-                <Monitor className="w-16 h-16 text-healthcare-blue mx-auto mb-6" />
-                <h3 className="text-xl font-semibold mb-4">Multi-Device Support</h3>
-                <p className="text-gray-600">Access consultations from any device - desktop, tablet, or smartphone with our web app.</p>
-              </Card>
-              
-              <Card className="text-center p-8 border-0 shadow-lg">
-                <Clock className="w-16 h-16 text-healthcare-teal mx-auto mb-6" />
-                <h3 className="text-xl font-semibold mb-4">24/7 Availability</h3>
-                <p className="text-gray-600">Emergency consultations available round the clock with our on-call specialists.</p>
-              </Card>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                  3
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Prepare & Pack</h3>
+                <p className="text-gray-600">Medicines prepared and packed securely</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                  4
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Delivered</h3>
+                <p className="text-gray-600">Safe delivery to your doorstep with tracking</p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-healthcare-teal to-healthcare-blue">
+        <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-500">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-display font-bold text-white mb-6">
-                Ready to Connect with a Doctor?
+                Need Your Medications Delivered?
               </h2>
               <p className="text-white/90 text-lg mb-8">
-                Experience the convenience of online healthcare. Book your consultation today and get expert medical advice from the comfort of your home.
+                Skip the pharmacy trip. Get your prescriptions delivered safely and quickly to your home.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" variant="secondary" className="bg-white text-healthcare-teal hover:bg-gray-100"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  Start Consultation Now
+                <Button size="lg" variant="secondary" className="bg-white text-purple-500 hover:bg-gray-100"
+                onClick={() => setShowOrderModal(true)}>
+                  Order Now
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-healthcare-teal">
-                  View Available Doctors
-                </Button>
+                <Link to="/components/NeedHelp">
+                  <Button size="lg" variant="outline" className="bg-white text-purple-500 hover:bg-gray-100">
+                    Need Help?
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <OrderMedicinesModal isOpen={showOrderModal} onClose={() => setShowOrderModal(false)} />
+<UploadPrescriptionModal isOpen={showUploadModal} onClose={() => setShowUploadModal(false)} />
       <Footer />
     </div>
   );
 };
 
-export default OnlineConsultationsLearnMore;
+export default PrescriptionDelivery;
