@@ -6,8 +6,10 @@ import { Calendar, Clock, MapPin, Users, CheckCircle, Heart, Star, Award } from 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
 
 const ClinicAppointmentsLearnMore = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const process = [
     {
       step: "1",
@@ -61,7 +63,9 @@ const ClinicAppointmentsLearnMore = () => {
                 Discover how our clinic appointment system revolutionizes your healthcare experience with seamless booking, expert doctors, and personalized care.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
-                <Button size="lg" className="bg-gradient-to-r from-healthcare-teal to-healthcare-blue hover:from-healthcare-teal/90 hover:to-healthcare-blue/90">
+                <Button size="lg" className="bg-gradient-to-r from-healthcare-teal to-healthcare-blue hover:from-healthcare-teal/90 hover:to-healthcare-blue/90"
+                onClick={() => setIsModalOpen(true)}
+                >
                   Book Your Appointment
                 </Button>
                 <Link to="/services/clinic-appointments">
@@ -194,7 +198,7 @@ const ClinicAppointmentsLearnMore = () => {
           </div>
         </section>
       </main>
-
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Footer />
     </div>
   );
