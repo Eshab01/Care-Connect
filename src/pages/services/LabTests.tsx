@@ -6,8 +6,10 @@ import { FileText, Home, Clock, Shield, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
 
 const LabTests = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const features = [
     {
       icon: <Home className="w-6 h-6" />,
@@ -187,11 +189,12 @@ const LabTests = () => {
                 Take control of your health with our comprehensive diagnostic services. Book now for convenient home collection.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" variant="secondary" className="bg-white text-green-500 hover:bg-gray-100">
+                <Button size="lg" variant="secondary" className="bg-white text-green-500 hover:bg-gray-100"
+                onClick={() => setIsModalOpen(true)}>
                   Book Test Now
                 </Button>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-500">
+                  <Button size="lg" variant="outline" className="bg-white text-healthcare-blue hover:bg-gray-100">
                     Get Help
                   </Button>
                 </Link>
@@ -200,7 +203,7 @@ const LabTests = () => {
           </div>
         </section>
       </main>
-
+            <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Footer />
     </div>
   );
