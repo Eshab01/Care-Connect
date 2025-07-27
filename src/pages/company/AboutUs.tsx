@@ -43,12 +43,12 @@ const AboutUs = () => {
       description: "Board-certified physician with 20+ years experience in internal medicine and digital health."
     },
     {
-      name: "Anmol Pyaari",
+      name: "Anmol Designer",
       role: "Chief Technology Officer",
       description: "Former Google engineer passionate about using technology to improve healthcare accessibility."
     },
     {
-      name: "Dr. Arun Bakra",
+      name: "Dr. Arun",
       role: "Head of Telemedicine",
       description: "Pioneering telemedicine specialist focused on remote patient care and digital therapeutics."
     }
