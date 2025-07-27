@@ -103,7 +103,7 @@ const Contact = () => {
                     <p className="text-gray-600">
                       Chandigarh University,<br />
                       Unnao, India - 123456<br />
-                      <a href="https://goo.gl/maps/xyz" className="text-healthcare-teal hover:underline">
+                      <a href="https://maps.app.goo.gl/eTy33zwCnhdvxQ9H6" className="text-healthcare-teal hover:underline">
                         View on Google Maps
                       </a>
                     </p>
