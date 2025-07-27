@@ -5,21 +5,21 @@ import { Card, CardContent } from '@/components/ui/card';
 const Testimonials = () => {
   const testimonials = [
     {
-      name: 'Anmol Pyaari',
+      name: 'Anmol Designer',
       role: 'Sasta Designer',
       image: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face',
       quote: 'CareConnect transformed how I manage my healthcare. Booking appointments is so simple now!',
       rating: 5
     },
     {
-      name: 'Arun Bakra',
+      name: 'Arun',
       role: 'Peeche ka Engineer',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       quote: 'The online consultations saved me so much time. The doctors are professional and caring.',
       rating: 5
     },
     {
-      name: 'Akshat Dalla',
+      name: 'Akshat',
       role: 'Thekedar',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       quote: 'Getting my lab results through the app was incredibly convenient. Highly recommend!',
