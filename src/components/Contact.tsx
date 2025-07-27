@@ -101,8 +101,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Visit Our Clinics</h3>
                     <p className="text-gray-600">
-                      69, Chikni Road<br />
-                      Pyaari City, India - 123456<br />
+                      Chandigarh University,<br />
+                      Unnao, India - 123456<br />
                       <a href="https://goo.gl/maps/xyz" className="text-healthcare-teal hover:underline">
                         View on Google Maps
                       </a>
