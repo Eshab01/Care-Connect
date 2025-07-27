@@ -26,7 +26,7 @@ const Press = () => {
       summary: "Recognition for outstanding innovation in digital health technology and patient care delivery."
     },
     {
-      date: "December 5, 2024",
+      date: "January 5, 2024",
       title: "Study Shows 40% Reduction in Hospital Readmissions",
       publication: "Journal of Medical Internet Research",
       summary: "New research demonstrates significant improvements in patient outcomes through CareConnect's remote monitoring platform."
