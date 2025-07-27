@@ -19,11 +19,11 @@ const Login = () => {
     e.preventDefault();
     
     // Check temporary credentials
-    if (formData.email === 'eshabsa@gmail.com' && formData.password === 'ganduarun69') {
+    if (formData.email === 'eshabsa@gmail.com' && formData.password === 'ESHAB123') {
       toast.success('Login successful! Welcome to CareConnect.');
       navigate('/');
     } else {
-      toast.error('Invalid credentials. Use: eshabsa@gmail.com / ganduarun69');
+      toast.error('Invalid credentials. Use: eshabsa@gmail.com / ESHAB123');
     }
   };
 
@@ -37,7 +37,7 @@ const Login = () => {
   const fillDemoCredentials = () => {
     setFormData({
       email: 'eshabsa@gmail.com',
-      password: 'ganduarun69'
+      password: 'ESHAB123'
     });
   };
 
@@ -64,7 +64,7 @@ const Login = () => {
           <div className="mb-6 p-4 bg-healthcare-teal/10 rounded-lg border border-healthcare-teal/20">
             <p className="text-sm text-healthcare-teal font-medium mb-2">Demo Credentials:</p>
             <p className="text-xs text-gray-600 mb-2">Email: eshabsa@gmail.com</p>
-            <p className="text-xs text-gray-600 mb-3">Password: ganduarun69</p>
+            <p className="text-xs text-gray-600 mb-3">Password: ESHAB123</p>
             <Button 
               type="button" 
               onClick={fillDemoCredentials}
